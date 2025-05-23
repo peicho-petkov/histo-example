@@ -62,8 +62,13 @@ int main(int argc, char **argv)
     printf("running gnuplot.\n");
     printf("press Enter to continue...\n");
     
-    system("gnuplot plot_pins_distribution.gnu");
-    
+    FILE *gnuplt;
+    if ( (gnuplt =fopen("plot_pins_distribution.gnu","r")) != NULL ) {
+        fclose(gnuplt);
+        system("gnuplot plot_pins_distribution.gnu");
+    } else {
+        printf("Plotting disabled: cannot find plot_pins_distribution.gnu\n");     
+    }
     printf("program finished successfully.\n");
     return 0;
 }
