@@ -10,3 +10,7 @@ add_library(utils STATIC src/utils.c)
 
 target_link_libraries(run-the-show PRIVATE histo1d utils)
 target_link_libraries(histo1d-test PRIVATE histo1d utils)
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/include DESTINATION ${CMAKE_INSTALL_PREFIX})
+install(TARGETS histo1d utils DESTINATION lib)
+install(TARGETS run-the-show DESTINATION bin) 
